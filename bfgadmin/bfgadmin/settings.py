@@ -78,8 +78,14 @@ WSGI_APPLICATION = 'bfgadmin.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'djbfg',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        #'HOST': '127.0.0.1',
+        #'PORT': '5432',
     }
 }
 
@@ -121,3 +127,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#For project files
+STATICFILES_DIRS = [
+    ('', 'E:/WebProjects/bfg-admin.com/bfgadmin/static')
+]
+#For fire server
+#STATIC_ROOT = 'bfg-admin.com/static'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
