@@ -5,5 +5,5 @@ import datetime
 @login_required
 def current_datetime(request):
     now = datetime.datetime.now()
-    html = "<html><body>It is now %s.</body></html>" % now
+    html = "<html><body>It is now %s.</body><p>%s</p></html>" % (now, request.user.is_active)
     return HttpResponse(html)
