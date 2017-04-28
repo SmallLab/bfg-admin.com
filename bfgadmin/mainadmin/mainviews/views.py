@@ -1,9 +1,7 @@
-from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
-import datetime
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.base import TemplateView
 
-@login_required
-def current_datetime(request):
-    now = datetime.datetime.now()
-    html = "<html><body>It is now %s.</body><p>%s</p></html>" % (now, request.user.is_active)
-    return HttpResponse(html)
+#Class MainView  - start page
+class MainView(LoginRequiredMixin, TemplateView):
+
+   template_name = 'index.html'
