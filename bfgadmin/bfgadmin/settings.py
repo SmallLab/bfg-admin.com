@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'bfgadmin.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-    'mainuser': {
+    'mainbfg': {
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djbfg',
+        'NAME': 'bfgadmin',
         'USER': 'root',
         'PASSWORD': 'root',
         #'HOST': '127.0.0.1',
@@ -92,7 +92,7 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bfgadmin',
+        'NAME': 'djbfg',
         'USER': 'root',
         'PASSWORD': 'root',
         # 'HOST': '127.0.0.1',
@@ -100,7 +100,7 @@ DATABASES = {
     }
 }
 
-
+DATABASE_ROUTERS = ['mainadmin.mainhelpers.routesdbmain.MainBfgRouter']
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
