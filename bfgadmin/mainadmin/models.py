@@ -1,6 +1,7 @@
 from django.db import models
 
-#-------------------------------- Regions Model -------------------------------------------
+"""-------------------------------- Regions Model -------------------------------------------"""
+
 
 class Regions(models.Model):
     name = models.CharField(max_length=100)

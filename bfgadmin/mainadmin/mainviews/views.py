@@ -4,11 +4,16 @@ from django.contrib.auth.models import Permission, User
 from mainadmin.models import Regions
 
 #Class MainView  - start page
+
+
 class MainView(LoginRequiredMixin, TemplateView):
 
    template_name = 'index.html'
 
+
 #Class UsersWork  - users page
+
+
 class UsersWork(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
 
    permission_required = "auth.change_user"

@@ -5,7 +5,7 @@ class MainBfgRouter(object):
     """
     def db_for_read(self, model, **hints):
         """
-        Attempts to read auth models go to auth_db.
+        Attempts to read auth models go to bfgadmin.
         """
         if model._meta.app_label == 'auth':
             return 'mainbfg'
@@ -13,7 +13,7 @@ class MainBfgRouter(object):
 
     def db_for_write(self, model, **hints):
         """
-        Attempts to write auth models go to auth_db.
+        Attempts to write auth models go to bfgadmin.
         """
         if model._meta.app_label == 'auth':
             return 'mainbfg'
