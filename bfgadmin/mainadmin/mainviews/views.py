@@ -14,7 +14,6 @@ class MainView(LoginRequiredMixin, TemplateView):
    template_name = 'index.html'
 
 
-
 """
     Work with users site
 """

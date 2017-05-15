@@ -36,7 +36,6 @@
                                         <th class="text-center">Is Active</th>
                                         <th class="text-center">Count Sentence</th>
                                         <th class="text-center">In detail</th>
-                                        <th class="text-center">Edit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,7 +48,6 @@
                                         <td class="text-center">{{ user_l.is_active }}</td>
                                         <td class="text-center">{{ user_l.profile.favorite_num }}</td>
                                         <td class="text-center"><a type="button" class="btn btn-sm btn-info" href="{% url 'detail' user_l.id %}">In detail</a></td>
-                                        <td class="text-center"><a type="button" class="btn btn-sm btn-success" href="{% url 'detail' user_l.id %}">Edit</a></td>
                                     </tr>
                                 {% endfor %}
 
