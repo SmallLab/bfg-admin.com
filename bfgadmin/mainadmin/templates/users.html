@@ -11,8 +11,11 @@
                             Users
                         </h1>
                         <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="/">Main Page</a>
+                            </li>
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Users
+                                <i class="fa fa-table"></i> Users
                             </li>
                         </ol>
                     </div>
@@ -21,18 +24,63 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <i class="fa fa-info-circle"></i>  <strong>{{ regions }}</strong>
+                        <h2>Users</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">№</th>
+                                        <th class="text-center">Username</th>
+                                        <th class="text-center">Date joined</th>
+                                        <th class="text-center">Last login</th>
+                                        <th class="text-center">Is Active</th>
+                                        <th class="text-center">Count Sentence</th>
+                                        <th class="text-center">In detail</th>
+                                        <th class="text-center">Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for user_l in users_list %}
+                                    <tr>
+                                        <td>{{ page_obj.start_index|add:forloop.counter|add:-1 }}</td>
+                                        <td class="text-center">{{ user_l.username }}</td>
+                                        <td class="text-center">{{ user_l.date_joined }}</td>
+                                        <td class="text-center">{{ user_l.last_login }}</td>
+                                        <td class="text-center">{{ user_l.is_active }}</td>
+                                        <td class="text-center">{{ user_l.profile.favorite_num }}</td>
+                                        <td class="text-center"><a type="button" class="btn btn-sm btn-info" href="{% url 'detail' user_l.id %}">In detail</a></td>
+                                        <td class="text-center"><a type="button" class="btn btn-sm btn-success" href="{% url 'detail' user_l.id %}">Edit</a></td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
                 <!-- /.row -->
 
             </div>
-            <!-- /.container-fluid -->
-{% for user_l in users_list %}
-    {{ user_l.username }}
-{% endfor %}
-        </div>
+<!--Pagination-->
+    {% if is_paginated %}
+    <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="/users/page/{{ page_obj.previous_page_number }}/">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="/users/page/{{ i }}/">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="/users/page/{{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+    </ul>
+{% endif %}
 {% endblock %}
