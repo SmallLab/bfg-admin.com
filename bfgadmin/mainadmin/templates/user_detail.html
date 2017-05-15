@@ -1,11 +1,9 @@
 {% extends "main.html" %}
+{% load staticfiles %}
 {% block content %}
     <div id="page-wrapper">
-
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
+        <div class="container-fluid">
+            <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             User Detail
@@ -23,17 +21,73 @@
                         </ol>
                     </div>
                 </div>
-                <!-- /.row -->
-
-                <div class="row">
+            <div class="row">
                     <div class="col-lg-12">
-                        <h2>{{ user_detail.username }}</h2>
-                        <h2>{{ user_detail.profile.favorite_num }}</h2>
+                        <h2>Main Data</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">Username</th>
+                                        <th class="text-center">Date joined</th>
+                                        <th class="text-center">Last login</th>
+                                        <th class="text-center">Is Active</th>
+                                        <th class="text-center">Count Sentence</th>
 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">{{ user_detail.username }}</td>
+                                        <td class="text-center">{{ user_detail.date_joined }}</td>
+                                        <td class="text-center">{{ user_detail.last_login }}</td>
+                                        <td class="text-center"><button type="button" class="btn btn-sm {% if user_detail.is_active %}btn-success{% else %}btn-danger{% endif %}"
+                                                                        data_info = "{{ user_detail.id }}"
+                                                                        id="is_active_u">{{ user_detail.is_active }}</button>
+                                        </td>
+                                        <td class="text-center">{{ user_detail.profile.favorite_num }}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-                <!-- /.row -->
+            <div class="row">
+                    <div class="col-lg-12">
+                        <h2>Main Data</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">№</th>
+                                        <th class="text-center">Username</th>
+                                        <th class="text-center">Date joined</th>
+                                        <th class="text-center">Last login</th>
+                                        <th class="text-center">Is Active</th>
+                                        <th class="text-center">Count Sentence</th>
+                                        <th class="text-center">In detail</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for user_detail in users_list %}
+                                    <tr>
+                                        <td>{{ page_obj.start_index|add:forloop.counter|add:-1 }}</td>
+                                        <td class="text-center">{{ user_detail.username }}</td>
+                                        <td class="text-center">{{ user_detail.date_joined }}</td>
+                                        <td class="text-center">{{ user_detail.last_login }}</td>
+                                        <td class="text-center">{{ user_detail.is_active }}</td>
+                                        <td class="text-center">{{ user_detail.profile.favorite_num }}</td>
+                                        <td class="text-center"><a type="button" class="btn btn-sm btn-info" href="{% url 'detail' user_detail.id %}">In detail</a></td>
+                                    </tr>
+                                {% endfor %}
 
-            </div>
-
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+<script src="{% static "js/userwork.js" %}"></script>
 {% endblock %}

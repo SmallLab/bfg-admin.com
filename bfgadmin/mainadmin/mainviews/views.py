@@ -1,9 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.views.generic import View
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.models import Permission, User
-from mainadmin.models import Regions
+from django.http import JsonResponse
 
 
 #Class MainView  - start page
@@ -42,3 +43,20 @@ class UserDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     queryset = User.objects.using('default').all()
     context_object_name = 'user_detail'
     template_name = 'user_detail.html'
+
+
+class AjaxUserIsActiveView(LoginRequiredMixin, PermissionRequiredMixin, View):
+    permission_required = "auth.change_user"
+    def get(self, request, *args, **kwargs):
+        if request.is_ajax():
+            user = User.objects.using('default').get(pk=kwargs['pk'])
+            if user.is_active:
+                user.is_active = False
+                user.last_name = 'Anonimus'
+                data = {"status":False}
+            else:
+                user.is_active = True
+                user.last_name = 'Anonimus200'
+                data = {"status": True}
+        user.save(using='default')
+        return JsonResponse(data)
