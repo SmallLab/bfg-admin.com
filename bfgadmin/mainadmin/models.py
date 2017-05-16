@@ -18,8 +18,34 @@ class Regions(models.Model):
         db_table = 'mainbfg_regions'
 
 
+"""------------------------- TypeSentence Model -----------------------------------------------"""
+"""
+Custom Manadger for model TypeSentence
+"""
 
-#-------------------------------- Profile Model -------------------------------------------#
+
+class ManadgerTypeSentence(models.Manager):
+#Get active Types
+    def get_active_types(self):
+        return self.get_queryset().filter(is_active__exact= True)
+
+
+class TypeSentence(models.Model):
+    name = models.CharField(max_length=50)
+    link_name = models.CharField(max_length=50, default='')
+    is_active = models.BooleanField(default=True)
+    object = ManadgerTypeSentence()
+
+    def get_absolute_url(self):
+        return "/%s/" % self.link_name
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'mainbfg_typesentence'
+
+""""-------------------------------- Profile Model -------------------------------------------"""
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

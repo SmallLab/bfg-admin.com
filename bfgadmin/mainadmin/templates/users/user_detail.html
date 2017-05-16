@@ -55,7 +55,7 @@
                 </div>
             <div class="row">
                     <div class="col-lg-12">
-                        <h2>Main Data</h2>
+                        <h2>Sentensec Data</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">
                                 <thead>
@@ -70,18 +70,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {% for user_detail in users_list %}
-                                    <tr>
-                                        <td>{{ page_obj.start_index|add:forloop.counter|add:-1 }}</td>
-                                        <td class="text-center">{{ user_detail.username }}</td>
-                                        <td class="text-center">{{ user_detail.date_joined }}</td>
-                                        <td class="text-center">{{ user_detail.last_login }}</td>
-                                        <td class="text-center">{{ user_detail.is_active }}</td>
-                                        <td class="text-center">{{ user_detail.profile.favorite_num }}</td>
-                                        <td class="text-center"><a type="button" class="btn btn-sm btn-info" href="{% url 'detail' user_detail.id %}">In detail</a></td>
-                                    </tr>
-                                {% endfor %}
 
+                                    <tr>
+                                        <td></td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center"><a type="button" class="btn btn-sm btn-info" href=""></a></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
