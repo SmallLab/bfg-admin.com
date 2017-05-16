@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b7a262ac-ecd6-455f-a96c-07822a481774" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mainadmin/static/js/tswork.js" afterPath="$PROJECT_DIR$/mainadmin/static/js/tswork.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -684,7 +683,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494943095784</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Users work">
+      <created>1494960564228</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1494960564228</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
