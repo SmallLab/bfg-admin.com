@@ -10,7 +10,6 @@ $(document).ready( function(){
               alert('Enter correct data for new type!!!');
               return false;
           }
-
           $.get(
               "/typesent/ajaxts/addnew/",
               {
@@ -34,11 +33,8 @@ $(document).ready( function(){
 /*
 * Changes 'is_active' field for type sentense data
 * */
-  $('td').on('click', 'button', function (e) {
-      console.log('3000$');
-      e.preventDefault();
-      return false;
-      if($(this).attr('data_info')){
+  $("tbody").on("click", "button", function () {
+    if($(this).attr('data_info')){
           var that = $(this)
           $.get(
               "/typesent/ajaxts/isactive/"+$(this).attr("data_info")+"/",
@@ -79,3 +75,8 @@ $(document).ready( function(){
         $(location).attr('href',url);
     });
 });
+
+// var count = 0;
+// $( "body" ).on( "click", "button", function() {
+//   $( this ).after( "<button>Another paragraph! " + (++count) + "</button>" );
+// });
