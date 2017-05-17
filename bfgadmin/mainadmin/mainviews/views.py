@@ -77,6 +77,11 @@ class TypeSentWork(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     queryset = TypeSentence.object.all()
     context_object_name = 'ts_list'
 
+    def get_context_data(self, **kwargs):
+        context = super(TypeSentWork, self).get_context_data(**kwargs)
+        context['tab'] = True
+        return context
+
 class AjaxTypeSentenseActive(LoginRequiredMixin, PermissionRequiredMixin, View):
 
     permission_required = "auth.change_user"
@@ -114,3 +119,8 @@ class TypeSentenceDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         TypeSentence.object.get(pk=kwargs['pk']).delete()
         return redirect('/typesent/')
+
+    def get_context_data(self, **kwargs):
+        context = super(TypeSentenceDelete, self).get_context_data(**kwargs)
+        context['tab'] = True
+        return context

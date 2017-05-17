@@ -56,10 +56,13 @@ $(document).ready( function(){
 /*
 * Delete type sentense data
 * */
-    $('[data_delete=delete]').click(function () {
-        $('#is_deleted_ts').modal();
-        $('#delete_type').attr('data_id_type', $(this).attr('href'));
-        return false;
+    $("tbody").on("click", "a", function () {
+        if($(this).attr('data_delete')){
+            $('#is_deleted_ts').modal();
+            $('#delete_type').attr('data_id_type', $(this).attr('href'));
+            return false;
+         }
+         return false;
     });
 
     $('#cancel_type').click(function () {

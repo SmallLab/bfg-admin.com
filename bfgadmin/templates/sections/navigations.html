@@ -129,7 +129,7 @@
                     {% if user.is_staff %}
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Sentenses <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
+                        <ul id="demo" class="collapse {% if tab %} in {% endif %}">
                             <li>
                                 <a href="/sentenses/"><i class="fa fa-list-alt"></i> Sentenses{{ perms.mainadmin.mode_sent }}</a>
                             </li>
