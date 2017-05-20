@@ -1,6 +1,6 @@
 $(document).ready( function(){
 /*
-* Add new category data
+* Add new CTR data
 * */
   $('#add_new_ctr').click(function () {
 
@@ -32,7 +32,7 @@ $(document).ready( function(){
 
   });
 /*
-* Changes 'is_active' field for category data
+* Changes 'is_active' field for CTR
 * */
   $("tbody").on("click", "button", function () {
     if($(this).attr('data_info')){
@@ -58,7 +58,7 @@ $(document).ready( function(){
 
 
 /*
-* Delete category data
+* Delete CTR data
 * */
     $("tbody").on("click", "a", function () {
         if($(this).attr('data_delete')){

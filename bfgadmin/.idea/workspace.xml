@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b7a262ac-ecd6-455f-a96c-07822a481774" name="Default" comment="Type sent work">
+    <list default="true" id="b7a262ac-ecd6-455f-a96c-07822a481774" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bfgadmin/settings.py" afterPath="$PROJECT_DIR$/bfgadmin/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mainadmin/mainviews/views.py" afterPath="$PROJECT_DIR$/mainadmin/mainviews/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mainadmin/models.py" afterPath="$PROJECT_DIR$/mainadmin/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mainadmin/templates/users/users.html" afterPath="$PROJECT_DIR$/mainadmin/templates/users/users.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mainadmin/static/js/ctrwork.js" afterPath="$PROJECT_DIR$/mainadmin/static/js/ctrwork.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mainadmin/urls.py" afterPath="$PROJECT_DIR$/mainadmin/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/sections/navigations.html" afterPath="$PROJECT_DIR$/templates/sections/navigations.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mainadmin/static/js/tswork.js" afterPath="$PROJECT_DIR$/mainadmin/static/js/ctrwork.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/mainadmin/templates/typesentensec/typesent.html" afterPath="$PROJECT_DIR$/mainadmin/templates/ctr/ctrwork.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,8 +55,8 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bfgadmin/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
-              <caret line="90" column="12" lean-forward="false" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="12" />
+            <state relative-caret-position="620">
+              <caret line="152" column="23" lean-forward="false" selection-start-line="152" selection-start-column="23" selection-end-line="152" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -68,10 +65,13 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mainadmin/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="49" lean-forward="false" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+            <state relative-caret-position="380">
+              <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
+                <marker date="1495302912797" expanded="true" signature="72:104" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+                <marker date="1495302912797" expanded="true" signature="480:915" ph="..." />
+                <marker date="1495302912797" expanded="true" signature="935:1079" ph="..." />
               </folding>
             </state>
           </provider>
@@ -80,18 +80,14 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mainadmin/mainviews/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="67" column="40" lean-forward="false" selection-start-line="67" selection-start-column="40" selection-end-line="67" selection-end-column="40" />
+            <state relative-caret-position="1860">
+              <caret line="135" column="33" lean-forward="false" selection-start-line="135" selection-start-column="33" selection-end-line="135" selection-end-column="33" />
               <folding>
                 <element signature="e#0#82#0" expanded="true" />
-                <element signature="e#540#568#0" expanded="false" />
-                <element signature="e#717#1169#0" expanded="false" />
-                <element signature="e#1256#1452#0" expanded="false" />
-                <element signature="e#1538#2089#0" expanded="false" />
-                <element signature="e#2229#2921#0" expanded="false" />
-                <element signature="e#3001#3561#0" expanded="false" />
-                <element signature="e#3637#4139#0" expanded="false" />
-                <element signature="e#4215#4710#0" expanded="false" />
+                <element signature="e#576#604#0" expanded="false" />
+                <element signature="e#753#1205#0" expanded="false" />
+                <element signature="e#1292#1488#0" expanded="false" />
+                <element signature="e#1574#2125#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -100,9 +96,52 @@
       <file leaf-file-name="ctrwork.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mainadmin/templates/ctr/ctrwork.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1780">
-              <caret line="89" column="104" lean-forward="false" selection-start-line="89" selection-start-column="104" selection-end-line="89" selection-end-column="104" />
-              <folding />
+            <state relative-caret-position="-780">
+              <caret line="24" column="27" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+              <folding>
+                <marker date="1495299213464" expanded="true" signature="113:1217" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="240:1210" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="291:1199" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="331:1184" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="374:705" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="747:871" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="1245:5382" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="1283:5371" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="1355:1956" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="1399:1933" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="1448:1517" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="2022:5320" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="2065:2340" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="2114:2313" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="2383:2744" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="2432:2717" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="3125:5297" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="3179:5270" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="3256:5239" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="3853:5202" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="3954:5115" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="4689:5073" ph="..." />
+                <marker date="1495299213464" expanded="true" signature="4727:5027" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navigations.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/sections/navigations.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="451">
+              <caret line="136" column="46" lean-forward="false" selection-start-line="136" selection-start-column="46" selection-end-line="136" selection-end-column="46" />
+              <folding>
+                <marker date="1495302894029" expanded="true" signature="92:9241" ph="..." />
+                <marker date="1495302894029" expanded="true" signature="6602:9187" ph="..." />
+                <marker date="1495302894029" expanded="true" signature="6699:9143" ph="..." />
+                <marker date="1495302894029" expanded="true" signature="7150:8172" ph="..." />
+                <marker date="1495302894029" expanded="true" signature="7414:8146" ph="..." />
+                <marker date="1495302894029" expanded="true" signature="7644:7784" ph="..." />
+                <marker date="1495302894029" expanded="true" signature="7817:7951" ph="..." />
+                <marker date="1495302894029" expanded="true" signature="7984:8116" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -110,9 +149,11 @@
       <file leaf-file-name="ctrwork.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mainadmin/static/js/ctrwork.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-380">
-              <caret line="27" column="87" lean-forward="false" selection-start-line="27" selection-start-column="87" selection-end-line="27" selection-end-column="87" />
-              <folding />
+            <state relative-caret-position="-800">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+              <folding>
+                <marker date="1495299801974" expanded="true" signature="29:2703" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -120,10 +161,11 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mainadmin/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="47" column="30" lean-forward="false" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+            <state relative-caret-position="100">
+              <caret line="45" column="38" lean-forward="false" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
+                <marker date="1495296955384" expanded="true" signature="625:1153" ph="..." />
               </folding>
             </state>
           </provider>
@@ -162,7 +204,6 @@
         <option value="$PROJECT_DIR$/mainadmin/admin.py" />
         <option value="$PROJECT_DIR$/bfgadmin/urls.py" />
         <option value="$PROJECT_DIR$/templates/registration/login.html" />
-        <option value="$PROJECT_DIR$/bfgadmin/settings.py" />
         <option value="$PROJECT_DIR$/mainadmin/mainhelpers/routesdbmain.py" />
         <option value="$PROJECT_DIR$/mainadmin/templates/index.html" />
         <option value="$PROJECT_DIR$/mainadmin/templates/users.html" />
@@ -179,11 +220,12 @@
         <option value="$PROJECT_DIR$/mainadmin/static/js/regions.js" />
         <option value="$PROJECT_DIR$/mainadmin/templates/regions/regions.html" />
         <option value="$PROJECT_DIR$/mainadmin/static/js/regionswork.js" />
-        <option value="$PROJECT_DIR$/templates/sections/navigations.html" />
         <option value="$PROJECT_DIR$/mainadmin/models.py" />
         <option value="$PROJECT_DIR$/mainadmin/templates/ctr/ctrwork.html" />
         <option value="$PROJECT_DIR$/mainadmin/static/js/ctrwork.js" />
+        <option value="$PROJECT_DIR$/templates/sections/navigations.html" />
         <option value="$PROJECT_DIR$/mainadmin/urls.py" />
+        <option value="$PROJECT_DIR$/bfgadmin/settings.py" />
         <option value="$PROJECT_DIR$/mainadmin/mainviews/views.py" />
       </list>
     </option>
@@ -226,6 +268,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="bfgadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bfgadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bfgadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bfgadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bfgadmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sections" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -739,7 +813,14 @@
       <option name="project" value="LOCAL" />
       <updated>1495047418370</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="CTR work">
+      <created>1495299719536</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1495299719536</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -758,7 +839,7 @@
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.108208954" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32929516" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30506608" sideWeight="0.510661" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13646056" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13646056" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32929516" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32929516" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -826,29 +907,16 @@
     <MESSAGE value="Custom login page1" />
     <MESSAGE value="Users work" />
     <MESSAGE value="Type sent work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Type sent work" />
+    <MESSAGE value="CTR work" />
+    <option name="LAST_COMMIT_MESSAGE" value="CTR work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/aa99c8a2-b993-4daa-8392-121f299fefed/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mainadmin/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/login.html" />
     <entry file="file://D:/Python3/Lib/site-packages/django/contrib/auth/views.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -1107,18 +1175,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/c0d16aa5/aa99c8a2-b993-4daa-8392-121f299fefed/djbfg.mainbfg_typesentence">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mainadmin/static/js/tswork.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1580">
@@ -1139,14 +1195,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="43" column="97" lean-forward="false" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="97" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bfgadmin/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="90" column="12" lean-forward="false" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -1199,64 +1247,146 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sections/navigations.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="142" column="53" lean-forward="false" selection-start-line="142" selection-start-column="46" selection-end-line="142" selection-end-column="53" />
+    <entry file="dbDummy://dbtable:/c0d16aa5/aa99c8a2-b993-4daa-8392-121f299fefed/djbfg.mainbfg_categories">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mainadmin/static/js/ctrwork.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-380">
-          <caret line="27" column="87" lean-forward="false" selection-start-line="27" selection-start-column="87" selection-end-line="27" selection-end-column="87" />
+    <entry file="dbDummy://dbtable:/c0d16aa5/aa99c8a2-b993-4daa-8392-121f299fefed/djbfg.mainbfg_regions">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://dbtable:/c0d16aa5/aa99c8a2-b993-4daa-8392-121f299fefed/djbfg.mainbfg_typesentence">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mainadmin/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="47" column="30" lean-forward="false" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
+        <state relative-caret-position="100">
+          <caret line="45" column="38" lean-forward="false" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
+            <marker date="1495296955384" expanded="true" signature="625:1153" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mainadmin/templates/ctr/ctrwork.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1780">
-          <caret line="89" column="104" lean-forward="false" selection-start-line="89" selection-start-column="104" selection-end-line="89" selection-end-column="104" />
-          <folding />
+        <state relative-caret-position="-780">
+          <caret line="24" column="27" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+          <folding>
+            <marker date="1495299213464" expanded="true" signature="113:1217" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="240:1210" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="291:1199" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="331:1184" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="374:705" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="747:871" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="1245:5382" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="1283:5371" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="1355:1956" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="1399:1933" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="1448:1517" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="2022:5320" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="2065:2340" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="2114:2313" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="2383:2744" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="2432:2717" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="3125:5297" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="3179:5270" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="3256:5239" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="3853:5202" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="3954:5115" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="4689:5073" ph="..." />
+            <marker date="1495299213464" expanded="true" signature="4727:5027" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainadmin/static/js/ctrwork.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-800">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <marker date="1495299801974" expanded="true" signature="29:2703" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sections/navigations.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="136" column="46" lean-forward="false" selection-start-line="136" selection-start-column="46" selection-end-line="136" selection-end-column="46" />
+          <folding>
+            <marker date="1495302894029" expanded="true" signature="92:9241" ph="..." />
+            <marker date="1495302894029" expanded="true" signature="6602:9187" ph="..." />
+            <marker date="1495302894029" expanded="true" signature="6699:9143" ph="..." />
+            <marker date="1495302894029" expanded="true" signature="7150:8172" ph="..." />
+            <marker date="1495302894029" expanded="true" signature="7414:8146" ph="..." />
+            <marker date="1495302894029" expanded="true" signature="7644:7784" ph="..." />
+            <marker date="1495302894029" expanded="true" signature="7817:7951" ph="..." />
+            <marker date="1495302894029" expanded="true" signature="7984:8116" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mainadmin/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="49" lean-forward="false" selection-start-line="10" selection-start-column="49" selection-end-line="10" selection-end-column="49" />
+        <state relative-caret-position="380">
+          <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+            <marker date="1495302912797" expanded="true" signature="72:104" ph="&quot;&quot;&quot;...&quot;&quot;&quot;" />
+            <marker date="1495302912797" expanded="true" signature="480:915" ph="..." />
+            <marker date="1495302912797" expanded="true" signature="935:1079" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bfgadmin/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="152" column="23" lean-forward="false" selection-start-line="152" selection-start-column="23" selection-end-line="152" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mainadmin/mainviews/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="67" column="40" lean-forward="false" selection-start-line="67" selection-start-column="40" selection-end-line="67" selection-end-column="40" />
+        <state relative-caret-position="1860">
+          <caret line="135" column="33" lean-forward="false" selection-start-line="135" selection-start-column="33" selection-end-line="135" selection-end-column="33" />
           <folding>
             <element signature="e#0#82#0" expanded="true" />
-            <element signature="e#540#568#0" expanded="false" />
-            <element signature="e#717#1169#0" expanded="false" />
-            <element signature="e#1256#1452#0" expanded="false" />
-            <element signature="e#1538#2089#0" expanded="false" />
-            <element signature="e#2229#2921#0" expanded="false" />
-            <element signature="e#3001#3561#0" expanded="false" />
-            <element signature="e#3637#4139#0" expanded="false" />
-            <element signature="e#4215#4710#0" expanded="false" />
+            <element signature="e#576#604#0" expanded="false" />
+            <element signature="e#753#1205#0" expanded="false" />
+            <element signature="e#1292#1488#0" expanded="false" />
+            <element signature="e#1574#2125#0" expanded="false" />
           </folding>
         </state>
       </provider>

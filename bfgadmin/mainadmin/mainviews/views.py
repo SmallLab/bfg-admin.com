@@ -6,6 +6,7 @@ from django.views.generic.detail import DetailView
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import redirect
+from django.core.cache import cache
 from mainadmin.models import TypeSentence, Categories, Regions
 
 
@@ -103,6 +104,7 @@ class AjaxCtrActive(LoginRequiredMixin, PermissionRequiredMixin, View):
                 ctr.is_active = True
                 data = {"status": True}
         ctr.save(using='default')
+        cache.set('data_ctr', '')
         return JsonResponse(data)
 
 class AjaxCtrNew(LoginRequiredMixin, PermissionRequiredMixin, View):
@@ -118,6 +120,7 @@ class AjaxCtrNew(LoginRequiredMixin, PermissionRequiredMixin, View):
                 is_active=False
             )
             new_ctr.save()
+            cache.set('data_ctr', '')
         return JsonResponse({"status": True, 'id':new_ctr.id})
 
 
@@ -129,7 +132,9 @@ class CtrDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         self.data_db[self.request.GET['key_ctr']].object.get(pk=kwargs['pk']).delete()
-        return redirect(self.request.GET['key_ctr'])
+        redirect_url = '/ctr/'+self.request.GET['key_ctr']+'/'
+        cache.set('data_ctr', '')
+        return redirect(redirect_url)
 
     def get_context_data(self, **kwargs):
         context = super(CtrDelete, self).get_context_data(**kwargs)
