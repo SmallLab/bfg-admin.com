@@ -6,7 +6,7 @@ from django.views.generic.detail import DetailView
 from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import redirect
-from mainadmin.models import TypeSentence
+from mainadmin.models import TypeSentence, Categories, Regions
 
 
 #Class MainView  - start page
@@ -64,63 +64,74 @@ class AjaxUserIsActiveView(LoginRequiredMixin, PermissionRequiredMixin, View):
         return JsonResponse(data)
 
 
-
 """
-    Work with Type Sentensec
+    Work with CTR(Category, Type sentences, Regions)
 """
 
-class TypeSentWork(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+class CtrWork(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 
+    data_db = {'typesent':TypeSentence, 'category':Categories, 'regions':Regions}
+    data_slug = {'typesent': 'Type Sentence', 'category': 'Categories', 'regions': 'Regions'}
     permission_required = "auth.change_user"
     login_url = '/'
-    template_name = 'typesentensec/typesent.html'
-    queryset = TypeSentence.object.all()
-    context_object_name = 'ts_list'
+    template_name = 'ctr/ctrwork.html'
+    context_object_name = 'ctr_list'
+
+    def get_queryset(self):
+        return self.data_db[self.kwargs['type_slug']].object.all()
 
     def get_context_data(self, **kwargs):
-        context = super(TypeSentWork, self).get_context_data(**kwargs)
+        context = super(CtrWork, self).get_context_data(**kwargs)
         context['tab'] = True
+        context['slug'] = self.data_slug[self.kwargs['type_slug']]
+        context['key_slug'] = self.kwargs['type_slug']
         return context
 
-class AjaxTypeSentenseActive(LoginRequiredMixin, PermissionRequiredMixin, View):
+
+class AjaxCtrActive(LoginRequiredMixin, PermissionRequiredMixin, View):
 
     permission_required = "auth.change_user"
+    data_db = {'typesent': TypeSentence, 'category': Categories, 'regions': Regions}
+
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
-            ts = TypeSentence.object.get(pk=kwargs['pk'])
-            if ts.is_active:
-                ts.is_active = False
+            ctr = self.data_db[self.request.GET['key_ctr']].object.get(pk=kwargs['pk'])
+            if ctr.is_active:
+                ctr.is_active = False
                 data = {"status":False}
             else:
-                ts.is_active = True
+                ctr.is_active = True
                 data = {"status": True}
-        ts.save(using='default')
+        ctr.save(using='default')
         return JsonResponse(data)
 
-class AjaxTypeSentenseNew(LoginRequiredMixin, PermissionRequiredMixin, View):
+class AjaxCtrNew(LoginRequiredMixin, PermissionRequiredMixin, View):
+
     permission_required = "auth.change_user"
+    data_db = {'typesent': TypeSentence, 'category': Categories, 'regions': Regions}
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
-            new_ts = TypeSentence(
+            new_ctr =  self.data_db[self.request.GET['key_ctr']](
                 name=self.request.GET['name'],
                 link_name=self.request.GET['link'],
                 is_active=False
             )
-            new_ts.save()
-        return JsonResponse({"status": True, 'id':new_ts.id})
+            new_ctr.save()
+        return JsonResponse({"status": True, 'id':new_ctr.id})
 
 
-class TypeSentenceDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
+class CtrDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
 
     permission_required = "auth.change_user"
+    data_db = {'typesent': TypeSentence, 'category': Categories, 'regions': Regions}
     login_url = '/'
 
     def get(self, request, *args, **kwargs):
-        TypeSentence.object.get(pk=kwargs['pk']).delete()
-        return redirect('/typesent/')
+        self.data_db[self.request.GET['key_ctr']].object.get(pk=kwargs['pk']).delete()
+        return redirect(self.request.GET['key_ctr'])
 
     def get_context_data(self, **kwargs):
-        context = super(TypeSentenceDelete, self).get_context_data(**kwargs)
+        context = super(CtrDelete, self).get_context_data(**kwargs)
         context['tab'] = True
         return context
