@@ -140,3 +140,14 @@ class CtrDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
         context = super(CtrDelete, self).get_context_data(**kwargs)
         context['tab'] = True
         return context
+
+class AjaxNumNew(LoginRequiredMixin, PermissionRequiredMixin, View):
+    permission_required = "auth.change_user"
+
+    def get(self, request, *args, **kwargs):
+        if request.is_ajax():
+            ctr = Categories.object.get(id=self.request.GET['id'])
+            ctr.max_num = self.request.GET['num']
+            ctr.save(using='default')
+
+            return JsonResponse({'status':True})

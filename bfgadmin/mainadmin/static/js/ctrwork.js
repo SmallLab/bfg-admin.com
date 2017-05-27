@@ -82,3 +82,43 @@ $(document).ready( function(){
         $(location).attr('href',url);
     });
 });
+
+/*
+* Form Change max num add free sentence for 'max_num' field Category
+* */
+
+$("tbody").on("click", "button", function () {
+        if($(this).attr('data-change')) {
+            $('#num_max_id').val($(this).attr('data-change'));
+            $('#change_max_num_modal').modal();
+        };
+    });
+
+/*
+* Change max num add free sentence
+* */
+  $('#save_type_chenge').click(function () {
+          var new_num = $('#new_num_max').val();
+          var id = $('#num_max_id').val()
+          if(new_num == '' ){
+              alert('Enter correct data for new num!!!');
+              return false;
+          }
+
+          $.get(
+              "/ctr/ajaxctr/newnum/",
+              {
+                  num: new_num,
+                  id:id
+              },
+              onAjaxSuccess
+            );
+            function onAjaxSuccess(data)
+            {
+              if (data.status){
+                    $('#change_max_num_modal').modal('hide');
+                    $('#cat_'+id).text(new_num);
+              }
+            }
+
+  });

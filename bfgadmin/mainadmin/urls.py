@@ -17,8 +17,8 @@ ctr_patterns = [
     url(r'^ajaxctr/isactive/(?P<pk>[0-9]+)/$', views.AjaxCtrActive.as_view(), name='ajax_ctr_is_active'),
     url(r'^ajaxctr/addnew/$', views.AjaxCtrNew.as_view(), name='ajax_ctr_new'),
     url(r'^deletectr/(?P<pk>[0-9]+)/$', views.CtrDelete.as_view(), name='delete_ctr'),
+    url(r'^ajaxctr/newnum/$', views.AjaxNumNew.as_view(), name='ajax_new_num'),
     url(r'^(?P<type_slug>[\w]*)?/', views.CtrWork.as_view(), name='ctr'),
-    #url(r'^(?:typectr/(?P<type_slug>[\w]*)?/)', views.CtrWork.as_view(), name='ctr'),
 ]
 
 
