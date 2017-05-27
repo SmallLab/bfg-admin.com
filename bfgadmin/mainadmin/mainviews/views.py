@@ -31,7 +31,7 @@ class UsersWork(LoginRequiredMixin, PermissionRequiredMixin, ListView):
    login_url = '/'
    queryset = User.objects.using('default').all()
    context_object_name = 'users_list' #or for custom paginate page_obj in template
-   paginate_by = 2
+   paginate_by = 10
 
    # def get_context_data(self, **kwargs):
    #    content = super(UsersWork, self).get_context_data(**kwargs)
@@ -88,7 +88,6 @@ class CtrWork(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         context['key_slug'] = self.kwargs['type_slug']
         return context
 
-
 class AjaxCtrActive(LoginRequiredMixin, PermissionRequiredMixin, View):
 
     permission_required = "auth.change_user"
@@ -123,7 +122,6 @@ class AjaxCtrNew(LoginRequiredMixin, PermissionRequiredMixin, View):
             cache.set('data_ctr', '')
         return JsonResponse({"status": True, 'id':new_ctr.id})
 
-
 class CtrDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
 
     permission_required = "auth.change_user"
@@ -141,13 +139,16 @@ class CtrDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
         context['tab'] = True
         return context
 
-class AjaxNumNew(LoginRequiredMixin, PermissionRequiredMixin, View):
+class AjaxNumNewCategories(LoginRequiredMixin, PermissionRequiredMixin, View):
     permission_required = "auth.change_user"
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
             ctr = Categories.object.get(id=self.request.GET['id'])
-            ctr.max_num = self.request.GET['num']
+            if self.request.GET['name_field'] == 'max_num':
+                ctr.max_num = self.request.GET['num']
+            else:
+                ctr.paid_num = self.request.GET['num']
             ctr.save(using='default')
 
             return JsonResponse({'status':True})

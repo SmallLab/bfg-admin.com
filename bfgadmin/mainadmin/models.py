@@ -25,6 +25,7 @@ class Categories(models.Model):
     icon_style = models.CharField(max_length=50, default='')
     is_icon_img = models.BooleanField(default=False)
     max_num = models.SmallIntegerField(default=1)
+    paid_num = models.SmallIntegerField(default=5)
     object = ManadgerCategories()
 
     class Meta:
