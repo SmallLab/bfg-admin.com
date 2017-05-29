@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.core.cache import cache
-from mainadmin.models import TypeSentence, Categories, Regions
+from mainadmin.models import (TypeSentence, Categories, Regions, Sentence)
 
 
 #Class MainView  - start page
@@ -16,6 +16,11 @@ from mainadmin.models import TypeSentence, Categories, Regions
 class MainView(LoginRequiredMixin, TemplateView):
 
    template_name = 'index.html'
+
+   # def get_context_data(self, **kwargs):
+   #    content = super(MainView, self).get_context_data(**kwargs)
+   #    content['count_new_sentences'] = Sentence.objects.filter(on_moderation=0).count()
+   #    return content
 
 
 """
@@ -32,11 +37,6 @@ class UsersWork(LoginRequiredMixin, PermissionRequiredMixin, ListView):
    queryset = User.objects.using('default').all()
    context_object_name = 'users_list' #or for custom paginate page_obj in template
    paginate_by = 10
-
-   # def get_context_data(self, **kwargs):
-   #    content = super(UsersWork, self).get_context_data(**kwargs)
-   #    content['users_list'] = User.objects.using('default').all()
-   #    return content
 
 
 class UserDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
