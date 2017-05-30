@@ -119,11 +119,11 @@
              {% if user.is_authenticated %}
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="/"><i class="glyphicon glyphicon-usd"></i> Main page</a>
+                        <a href="{% url 'home' %}"><i class="glyphicon glyphicon-usd"></i> Main page</a>
                     </li>
                     {% if user.is_staff %}
                         <li>
-                            <a href="/users/"><i class="fa fa-fw fa fa-users"></i> Users</a>
+                            <a href="{% url 'users' %}"><i class="fa fa-fw fa fa-users"></i> Users</a>
                         </li>
                     {% endif %}
                     {% if user.is_staff %}
@@ -166,7 +166,7 @@
                         </li>
                     {% endif %}
                         <li>
-                            <a href="/newsentence/"><i class="fa fa-hand-o-right"></i> New Sentences   <span id="count_new_sentences">{{ count_new_sentences }}</span></a>
+                            <a href="{% url 'mode_new_sentence' %}"><i class="fa fa-hand-o-right"></i> New Sentences   <span id="count_new_sentences">{{ count_new_sentences }}</span></a>
                         </li>
                 </ul>
              {% endif %}

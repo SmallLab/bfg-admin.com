@@ -1,8 +1,8 @@
-var my_ajax_req ={ // создаем экземпляр объекта
+var my_ajax_req ={
 
-// задаем свойства объекта
-    updInterval: 10000, // 10 сек. - интервал времени между запросами
-    url: 'ajax.php', // скрипт который должен отвечать на Ajax запросы
+    updInterval: 10000,
+    url: '/ctr/ajax/newsentcount/',
+    elem: $('#count_new_sentences'),
     init: function(){
         var self = my_ajax_req;
         setInterval($.proxy(my_ajax_req.requestData, self), self.updInterval);
@@ -11,7 +11,6 @@ var my_ajax_req ={ // создаем экземпляр объекта
     requestData: function(){
         var self = my_ajax_req;
 
-        // ajax запрос посредством JQuery
         $.ajax({
             url: self.url,
             type: 'GET',
@@ -21,16 +20,16 @@ var my_ajax_req ={ // создаем экземпляр объекта
         });
     },
 
-    // метод принимает ответ на Ajax запрос
-    update: function(Data){
+    update: function(data) {
         var self = my_ajax_req;
-        console.log(Data);
-        // тут можно дописать логику после получения данных
-    },
+        if (data.status){
+            self.elem.text(data.count);
+        }
 
-    // метод для обработки ошибок
+    },
     error: function(Data){
         var self = my_ajax_req;
         console.log('Failed to get data');
     },
-}
+};
+my_ajax_req.init();

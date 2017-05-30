@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.core.cache import cache
+from django.core.exceptions import ObjectDoesNotExist
 from mainadmin.models import (TypeSentence, Categories, Regions, Sentence)
 
 
@@ -152,3 +153,33 @@ class AjaxNumNewCategories(LoginRequiredMixin, PermissionRequiredMixin, View):
             ctr.save(using='default')
 
             return JsonResponse({'status':True})
+
+"""
+    Update count new sentence for moderations
+"""
+class AjaxNewSentencesView(LoginRequiredMixin, PermissionRequiredMixin, View):
+    permission_required = "auth.change_user"
+    def get(self, request, *args, **kwargs):
+        if request.is_ajax():
+            return JsonResponse({'status':True, 'count':Sentence.objects.filter(on_moderation=0).count()})
+
+"""
+    Moderate new sentence
+"""
+
+class ModerateNewSentence(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
+    login_url = '/'
+    permission_required = "auth.change_user"
+    template_name = 'ctr/sentmoderste.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ModerateNewSentence, self).get_context_data(**kwargs)
+        try:
+            context['new_sent'] = new_sent  = Sentence.objects.order_by('-create_time').filter(on_moderation=0)[0]
+            context['type_sent'] = TypeSentence.object.only('name').get(pk=new_sent.type_id)
+            context['category_sent'] = Categories.object.only('name').get(pk=new_sent.category_id)
+            context['region_sent'] = Regions.object.only('name').get(pk=new_sent.region_id)
+            context['slug'] = 'Moderation sentence'
+            return context
+        except IndexError:
+            pass

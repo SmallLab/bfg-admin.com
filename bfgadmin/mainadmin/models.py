@@ -152,3 +152,18 @@ class Sentence(models.Model):
 
     class Meta:
         db_table = 'mainbfg_sentence'
+
+
+"""---------------------------------Images Model----------------------------------------------"""
+
+class Image(models.Model):
+
+    sentence = models.ForeignKey(Sentence, on_delete=models.CASCADE, related_name='image')
+    img_path = models.CharField(max_length=250, blank=True)
+
+
+    def get_absolute_url(self):
+        return self.img_path
+
+    class Meta:
+        db_table = 'mainbfg_image'

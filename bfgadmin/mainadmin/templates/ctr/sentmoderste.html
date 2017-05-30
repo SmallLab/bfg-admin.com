@@ -1,0 +1,91 @@
+{% extends "main.html" %}
+{% load staticfiles %}
+{% block content %}
+      <div id="page-wrapper">
+        <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            {{ slug }}
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="{% url 'home' %}">Main Page</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-table"></i> {{ slug }}
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+        </div>
+          <div class="row">
+                    <div class="col-lg-12">
+                        <h2>New Sentence</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Autor</th>
+                                        <th>Caption</th>
+                                        <th>Type</th>
+                                        <th>Category</th>
+                                        <th>Region</th>
+                                        <th>Full Adress</th>
+                                        <th>Phone</th>
+                                        <th>Site</th>
+                                        <th>Is webstore</th>
+                                        <th>Meta</th>
+                                        <th>Description</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ new_sent.autor }}</td>
+                                        <td>{{ new_sent.caption }}</td>
+                                        <td>{{ type_sent }}</td>
+                                        <td>{{ category_sent }}</td>
+                                        <td>{{ region_sent }}</td>
+                                        <td>{{ new_sent.full_adress }}</td>
+                                        <td>{{ new_sent.phone }}</td>
+                                        <td>{{ new_sent.web_site }}</td>
+                                        <td>{{ new_sent.is_webstore }}</td>
+                                        <td>{{ new_sent.meta_info }}</td>
+                                        <td>{{ new_sent.description }}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-1 text-center">
+                        <div class="panel-body">
+                            <img class="img-thumbnail" style="max-width:none" src="http://localhost:8000/media/{{ new_sent.main_img }}" width="200px;" height="200px;">
+                        </div>
+                    </div>
+                    {% with othe_img=new_sent.image.all %}
+                         {% for i in othe_img %}
+                             <div class="col-lg-1 text-center">
+                                 <div class="panel-body">
+                                     <img class="img-thumbnail" style="max-width:none" src="http://localhost:8000/{{ i.img_path }}" width="200px;" height="200px;">
+                                 </div>
+                             </div>
+                         {% endfor %}
+                    {% endwith %}
+                 </div>
+                 <div class="row">
+                    <div class="col-lg-12">
+                         <p>
+                            <button type="button" class="btn btn-lg btn-default">Default</button>
+                            <button type="button" class="btn btn-lg btn-primary">Primary</button>
+                         </p>
+                    </div>
+                 </div>
+
+    </div>
+{% endblock %}

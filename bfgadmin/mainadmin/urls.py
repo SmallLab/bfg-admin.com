@@ -18,6 +18,8 @@ ctr_patterns = [
     url(r'^ajaxctr/addnew/$', views.AjaxCtrNew.as_view(), name='ajax_ctr_new'),
     url(r'^deletectr/(?P<pk>[0-9]+)/$', views.CtrDelete.as_view(), name='delete_ctr'),
     url(r'^ajaxctr/newnum/$', views.AjaxNumNewCategories.as_view(), name='ajax_new_num'),
+    url(r'^ajax/newsentcount/$', views.AjaxNewSentencesView.as_view(), name='get_new_count'),
+    url(r'^modesentence/$', views.ModerateNewSentence.as_view(), name='mode_new_sentence'),
     url(r'^(?P<type_slug>[\w]*)?/', views.CtrWork.as_view(), name='ctr'),
 ]
 
