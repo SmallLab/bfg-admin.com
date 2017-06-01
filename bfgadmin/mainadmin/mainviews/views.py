@@ -121,7 +121,11 @@ class AjaxCtrNew(LoginRequiredMixin, PermissionRequiredMixin, View):
             )
             new_ctr.save()
             cache.set('data_ctr', '')
-        return JsonResponse({"status": True, 'id':new_ctr.id})
+            if self.request.GET['key_ctr'] == 'category':
+                type_cat = True
+            else:
+                type_cat = False
+        return JsonResponse({"status": True, 'id':new_ctr.id, 'type':type_cat})
 
 class CtrDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
 

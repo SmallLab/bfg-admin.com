@@ -22,11 +22,21 @@ $(document).ready( function(){
             function onAjaxSuccess(data)
             {
               if (data.status){
-                    var new_type = '<tr><td></td><td class="text-center">'+new_name+'</td><td class="text-center"><button type="button"'+
+                  if (data.type){
+                      var new_type = '<tr><td></td><td class="text-center">'+new_name+'</td><td class="text-center"><button type="button"'+
+                                    'class="btn btn-sm btn-danger" data_info = "'+data.id+'">False</button></td><td class="text-center">'+
+                                    ''+new_link+'</td><td class="text-center"><button type="button" data-change="'+data.id+'" class="btn btn-sm btn-success"'+
+                                    'id="cat_'+data.id+'">1</button></td><td class="text-center"><button type="button" data-change-num="'+data.id+'" '+
+                                    'class="btn btn-sm btn-success" id="paid_'+data.id+'">5</button></td><td class="text-center"><a type="button" data_delete="delete" id="'+data.id+'"'+
+                                    'class="btn btn-sm btn-danger" href="/ctr/deletectr/'+data.id+'/">Delete</a></td>';
+                  }
+                  else{
+                      var new_type = '<tr><td></td><td class="text-center">'+new_name+'</td><td class="text-center"><button type="button"'+
                                     'class="btn btn-sm btn-danger" data_info = "'+data.id+'">False</button></td><td class="text-center">'+
                                     ''+new_link+'</td><td class="text-center"><a type="button" data_delete="delete" id="'+data.id+'"'+
                                     'class="btn btn-sm btn-danger" href="/ctr/deletectr/'+data.id+'/">Delete</a></td>';
-                    $('#ctr_list').append(new_type);
+                  }
+                  $('#ctr_list').append(new_type);
               }
             }
 
