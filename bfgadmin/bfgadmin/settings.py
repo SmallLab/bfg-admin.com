@@ -160,3 +160,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
+
+MAIN_HOST_SITE = 'http://localhost:8000'

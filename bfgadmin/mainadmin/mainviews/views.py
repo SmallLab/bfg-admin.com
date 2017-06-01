@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.core.cache import cache
-from django.core.exceptions import ObjectDoesNotExist
+from django.conf import settings
 from mainadmin.models import (TypeSentence, Categories, Regions, Sentence)
 
 
@@ -183,7 +183,21 @@ class ModerateNewSentence(LoginRequiredMixin, PermissionRequiredMixin, TemplateV
             context['type_sent'] = TypeSentence.object.only('name').get(pk=new_sent.type_id)
             context['category_sent'] = Categories.object.only('name').get(pk=new_sent.category_id)
             context['region_sent'] = Regions.object.only('name').get(pk=new_sent.region_id)
+            context['main_host'] = settings.MAIN_HOST_SITE
             context['slug'] = 'Moderation sentence'
             return context
         except IndexError:
             pass
+
+class ModeResult(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
+
+    login_url = '/'
+    permission_required = "auth.change_user"
+    template_name = 'index.html'
+
+    def get(self, request, *args, **kwargs):
+        sentence = Sentence.objects.get(pk=kwargs['pk'])
+        sentence.status = kwargs['status']
+        sentence.on_moderation = True
+        sentence.save()
+        return super(ModeResult, self).get(request)
