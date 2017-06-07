@@ -20,7 +20,17 @@
                     </div>
                 </div>
         </div>
+      {% if no_sentence %}
           <div class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="fa fa-info-circle"></i>No new Sentemnces!
+                        </div>
+                    </div>
+                </div>
+      {% else %}
+        <div class="row">
                     <div class="col-lg-12">
                         <h2>New Sentence</h2>
                         <div class="table-responsive">
@@ -61,8 +71,8 @@
                         </div>
                     </div>
 
-                </div>
-                <div class="row">
+          </div>
+        <div class="row">
                     <div class="col-lg-1 text-center">
                         <div class="panel-body">
                             <img class="img-thumbnail" style="max-width:none" src="{{ main_host }}/media/{{ new_sent.main_img }}" width="200px;" height="200px;">
@@ -77,15 +87,15 @@
                              </div>
                          {% endfor %}
                     {% endwith %}
-                 </div>
-                 <div class="row">
-                    <div class="col-lg-12">
-                         <p>
-                            <a type="button" href="{% url 'moderesult' status=1 pk=new_sent.id %}" class="btn btn-lg btn-default">Activate</a>
-                            <a type="button" href="{% url 'moderesult' status=2 pk=new_sent.id %}" class="btn btn-lg btn-primary">To edit</a>
-                         </p>
-                    </div>
-                 </div>
-
+          </div>
+        <div class="row">
+              <div class="col-lg-12">
+                  <p>
+                      <a type="button" href="{% url 'moderesult' status=1 pk=new_sent.id %}" class="btn btn-lg btn-default">Activate</a>
+                      <a type="button" href="{% url 'moderesult' status=2 pk=new_sent.id %}" class="btn btn-lg btn-primary">To edit</a>
+                  </p>
+              </div>
+        </div>
+      {% endif %}
     </div>
 {% endblock %}

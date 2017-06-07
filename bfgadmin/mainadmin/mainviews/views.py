@@ -187,7 +187,8 @@ class ModerateNewSentence(LoginRequiredMixin, PermissionRequiredMixin, TemplateV
             context['slug'] = 'Moderation sentence'
             return context
         except IndexError:
-            pass
+            context['no_sentence'] = True
+        return context
 
 class ModeResult(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
 
