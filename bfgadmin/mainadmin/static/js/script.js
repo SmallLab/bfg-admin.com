@@ -1,3 +1,7 @@
+/*
+* Update counts new sentenses
+* */
+
 var my_ajax_req ={
 
     updInterval: 10000,
