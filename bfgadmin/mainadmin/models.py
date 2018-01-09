@@ -64,7 +64,6 @@ class Regions(models.Model):
 Custom Manadger for model TypeSentence
 """
 
-
 class ManadgerTypeSentence(models.Manager):
 #Get active Types
     def get_active_types(self):

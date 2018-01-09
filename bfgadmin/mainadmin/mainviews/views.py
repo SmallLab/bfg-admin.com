@@ -179,12 +179,14 @@ class ModerateNewSentence(LoginRequiredMixin, PermissionRequiredMixin, TemplateV
     def get_context_data(self, **kwargs):
         context = super(ModerateNewSentence, self).get_context_data(**kwargs)
         try:
-            context['new_sent'] = new_sent  = Sentence.objects.order_by('-create_time').filter(on_moderation=0)[0]
+            context['new_sent'] = new_sent = Sentence.objects.order_by('-create_time').filter(on_moderation=0)[0]
             context['type_sent'] = TypeSentence.object.only('name').get(pk=new_sent.type_id)
             context['category_sent'] = Categories.object.only('name').get(pk=new_sent.category_id)
             context['region_sent'] = Regions.object.only('name').get(pk=new_sent.region_id)
             context['main_host'] = settings.MAIN_HOST_SITE
             context['slug'] = 'Moderation sentence'
+            new_sent.on_moderation = True
+            new_sent.save()
             return context
         except IndexError:
             context['no_sentence'] = True
