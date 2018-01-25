@@ -45,7 +45,8 @@
                                                                         data_info = "{{ user_detail.id }}"
                                                                         id="is_active_u">{{ user_detail.is_active }}</button>
                                         </td>
-                                        <td class="text-center">{{ user_detail.profile.favorite_num }}</td>
+{#                                        <td class="text-center">{{ user_detail.profile.favorite_num }}</td>#}
+                                        <td class="text-center">{{ user_detail.sentences.count }}</td>
 
                                     </tr>
                                 </tbody>

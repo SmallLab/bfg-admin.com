@@ -65,7 +65,6 @@ class AjaxUserIsActiveView(LoginRequiredMixin, PermissionRequiredMixin, View):
         user.save(using='default')
         return JsonResponse(data)
 
-
 """
     Work with CTR(Category, Type sentences, Regions)
 """
@@ -105,6 +104,7 @@ class AjaxCtrActive(LoginRequiredMixin, PermissionRequiredMixin, View):
                 data = {"status": True}
         ctr.save(using='default')
         cache.set('data_ctr', '')
+        cache.set('dictCategory', '')
         return JsonResponse(data)
 
 class AjaxCtrNew(LoginRequiredMixin, PermissionRequiredMixin, View):
@@ -121,6 +121,7 @@ class AjaxCtrNew(LoginRequiredMixin, PermissionRequiredMixin, View):
             )
             new_ctr.save()
             cache.set('data_ctr', '')
+            cache.set('dictCategory', '')
             if self.request.GET['key_ctr'] == 'category':
                 type_cat = True
             else:
@@ -137,6 +138,7 @@ class CtrDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
         self.data_db[self.request.GET['key_ctr']].object.get(pk=kwargs['pk']).delete()
         redirect_url = '/ctr/'+self.request.GET['key_ctr']+'/'
         cache.set('data_ctr', '')
+        cache.set('dictCategory', '')
         return redirect(redirect_url)
 
     def get_context_data(self, **kwargs):
