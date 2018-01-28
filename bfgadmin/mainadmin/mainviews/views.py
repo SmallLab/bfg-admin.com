@@ -105,6 +105,7 @@ class AjaxCtrActive(LoginRequiredMixin, PermissionRequiredMixin, View):
         ctr.save(using='default')
         cache.set('data_ctr', '')
         cache.set('dictCategory', '')
+        cache.set('dictType', '')
         return JsonResponse(data)
 
 class AjaxCtrNew(LoginRequiredMixin, PermissionRequiredMixin, View):
@@ -122,6 +123,7 @@ class AjaxCtrNew(LoginRequiredMixin, PermissionRequiredMixin, View):
             new_ctr.save()
             cache.set('data_ctr', '')
             cache.set('dictCategory', '')
+            cache.set('dictType', '')
             if self.request.GET['key_ctr'] == 'category':
                 type_cat = True
             else:
@@ -139,6 +141,7 @@ class CtrDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
         redirect_url = '/ctr/'+self.request.GET['key_ctr']+'/'
         cache.set('data_ctr', '')
         cache.set('dictCategory', '')
+        cache.set('dictType', '')
         return redirect(redirect_url)
 
     def get_context_data(self, **kwargs):
