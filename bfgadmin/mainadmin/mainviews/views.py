@@ -13,7 +13,6 @@ from mainadmin.models import (TypeSentence, Categories, Regions, Sentence)
 
 #Class MainView  - start page
 
-
 class MainView(LoginRequiredMixin, TemplateView):
 
    template_name = 'index.html'
@@ -22,7 +21,6 @@ class MainView(LoginRequiredMixin, TemplateView):
    #    content = super(MainView, self).get_context_data(**kwargs)
    #    content['count_new_sentences'] = Sentence.objects.filter(on_moderation=0).count()
    #    return content
-
 
 """
     Work with users site
@@ -39,7 +37,6 @@ class UsersWork(LoginRequiredMixin, PermissionRequiredMixin, ListView):
    context_object_name = 'users_list' #or for custom paginate page_obj in template
    paginate_by = 10
 
-
 class UserDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
 
     login_url = '/'
@@ -47,7 +44,6 @@ class UserDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     queryset = User.objects.using('default').all()
     context_object_name = 'user_detail'
     template_name = 'users/user_detail.html'
-
 
 class AjaxUserIsActiveView(LoginRequiredMixin, PermissionRequiredMixin, View):
     permission_required = "auth.change_user"
