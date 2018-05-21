@@ -28,6 +28,7 @@ class MainView(LoginRequiredMixin, TemplateView):
 
 #Class UsersWork  - All users page
 
+
 class UsersWork(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 
    permission_required = "auth.change_user"
@@ -37,6 +38,7 @@ class UsersWork(LoginRequiredMixin, PermissionRequiredMixin, ListView):
    context_object_name = 'users_list' #or for custom paginate page_obj in template
    paginate_by = 10
 
+
 class UserDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
 
     login_url = '/'
@@ -45,29 +47,34 @@ class UserDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     context_object_name = 'user_detail'
     template_name = 'users/user_detail.html'
 
+
 class AjaxUserIsActiveView(LoginRequiredMixin, PermissionRequiredMixin, View):
     permission_required = "auth.change_user"
+
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
             user = User.objects.using('default').get(pk=kwargs['pk'])
             if user.is_active:
                 user.is_active = False
                 user.last_name = 'Anonimus'
-                data = {"status":False}
+                data = {"status": False}
+                user.save(using='default')
+                return JsonResponse(data)
             else:
                 user.is_active = True
                 user.last_name = 'Anonimus200'
                 data = {"status": True}
-        user.save(using='default')
-        return JsonResponse(data)
+                user.save(using='default')
+                return JsonResponse(data)
 
 """
     Work with CTR(Category, Type sentences, Regions)
 """
 
+
 class CtrWork(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 
-    data_db = {'typesent':TypeSentence, 'category':Categories, 'regions':Regions}
+    data_db = {'typesent': TypeSentence, 'category': Categories, 'regions': Regions}
     data_slug = {'typesent': 'Type Sentence', 'category': 'Categories', 'regions': 'Regions'}
     permission_required = "auth.change_user"
     login_url = '/'
@@ -83,6 +90,7 @@ class CtrWork(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         context['slug'] = self.data_slug[self.kwargs['type_slug']]
         context['key_slug'] = self.kwargs['type_slug']
         return context
+
 
 class AjaxCtrActive(LoginRequiredMixin, PermissionRequiredMixin, View):
 
@@ -104,6 +112,7 @@ class AjaxCtrActive(LoginRequiredMixin, PermissionRequiredMixin, View):
         cache.set('dictType', '')
         return JsonResponse(data)
 
+
 class AjaxCtrNew(LoginRequiredMixin, PermissionRequiredMixin, View):
 
     permission_required = "auth.change_user"
@@ -111,7 +120,7 @@ class AjaxCtrNew(LoginRequiredMixin, PermissionRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
-            new_ctr =  self.data_db[self.request.GET['key_ctr']](
+            new_ctr = self.data_db[self.request.GET['key_ctr']](
                 name=self.request.GET['name'],
                 link_name=self.request.GET['link'],
                 is_active=False
@@ -124,7 +133,8 @@ class AjaxCtrNew(LoginRequiredMixin, PermissionRequiredMixin, View):
                 type_cat = True
             else:
                 type_cat = False
-        return JsonResponse({"status": True, 'id':new_ctr.id, 'type':type_cat})
+        return JsonResponse({"status": True, 'id': new_ctr.id, 'type': type_cat})
+
 
 class CtrDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
 
@@ -145,6 +155,7 @@ class CtrDelete(LoginRequiredMixin, PermissionRequiredMixin, View):
         context['tab'] = True
         return context
 
+
 class AjaxNumNewCategories(LoginRequiredMixin, PermissionRequiredMixin, View):
     permission_required = "auth.change_user"
 
@@ -162,8 +173,11 @@ class AjaxNumNewCategories(LoginRequiredMixin, PermissionRequiredMixin, View):
 """
     Update count new sentence for moderations
 """
+
+
 class AjaxNewSentencesView(LoginRequiredMixin, PermissionRequiredMixin, View):
     permission_required = "auth.change_user"
+
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
             return JsonResponse({'status':True, 'count':Sentence.objects.filter(on_moderation=0).count()})
@@ -171,6 +185,7 @@ class AjaxNewSentencesView(LoginRequiredMixin, PermissionRequiredMixin, View):
 """
     Moderate new sentence
 """
+
 
 class ModerateNewSentence(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
     login_url = '/'
@@ -192,6 +207,7 @@ class ModerateNewSentence(LoginRequiredMixin, PermissionRequiredMixin, TemplateV
         except IndexError:
             context['no_sentence'] = True
         return context
+
 
 class ModeResult(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
 

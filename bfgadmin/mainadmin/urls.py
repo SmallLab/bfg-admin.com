@@ -24,8 +24,6 @@ ctr_patterns = [
     url(r'^(?P<type_slug>[\w]*)?/', views.CtrWork.as_view(), name='ctr'),
 ]
 
-
-
 urlpatterns = [
     url(r'^$', views.MainView.as_view(), name='home'),
     url(r'^users/', include(users_patterns)),

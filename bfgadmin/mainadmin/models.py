@@ -8,6 +8,7 @@ from mainadmin.mainhelpers import MainImgTypeField as MI
 Custom Manadger for model Categories
 """
 
+
 class ManadgerCategories(models.Manager):
 #Get active Categories
     def get_active_categories(self):
@@ -40,8 +41,11 @@ class Categories(models.Model):
 
 
 """-------------------------------- Regions Model -------------------------------------------"""
+
+
 class ManadgerRegions(models.Manager):
     pass
+
 
 class Regions(models.Model):
     name = models.CharField(max_length=100)
@@ -63,6 +67,7 @@ class Regions(models.Model):
 """
 Custom Manadger for model TypeSentence
 """
+
 
 class ManadgerTypeSentence(models.Manager):
 #Get active Types
@@ -87,6 +92,7 @@ class TypeSentence(models.Model):
 
 """"-------------------------------- Profile Model -------------------------------------------"""
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone = models.CharField(blank=True, max_length=100)
@@ -104,8 +110,10 @@ class Profile(models.Model):
 
 """-----------------------------------Sentence Model-----------------------------------------"""
 
+
 def custom_directory_path(instance, filename):
     return 'images/{0}/{1}'.format(instance.dirname_img, filename)
+
 
 class Sentence(models.Model):
 
@@ -141,10 +149,8 @@ class Sentence(models.Model):
     link_name = models.CharField(max_length=550)
     identifier = models.CharField(max_length=20)
 
-
     def get_absolute_url(self):
         return "sentence/%s" % self.link_name
-
 
     def __str__(self):
         return self.link_name
@@ -154,6 +160,7 @@ class Sentence(models.Model):
 
 
 """---------------------------------Images Model----------------------------------------------"""
+
 
 class Image(models.Model):
 
@@ -166,3 +173,19 @@ class Image(models.Model):
 
     class Meta:
         db_table = 'mainbfg_image'
+
+"""--------------------------------------Notification Model-----------------------------------"""
+
+
+class ManageNotificationTask(models.Manager):
+    pass
+
+
+class NotificationTask(models.Model):
+    sent_id = models.IntegerField()
+    user_id = models.IntegerField()
+    text_message = models.CharField(default='', max_length=100)
+    data_send_sms = models.TextField() #Phone numbers for send SMS
+    data_send_email = models.TextField() #EMAIL data for send email
+    is_send = models.BooleanField(default=False)
+    objects = ManageNotificationTask()
