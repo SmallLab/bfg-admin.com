@@ -189,13 +189,14 @@ class AjaxNewSentencesView(LoginRequiredMixin, PermissionRequiredMixin, View):
 
 class ModerateNewSentence(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
     login_url = '/'
-    permission_required = "auth.change_user"
+    permission_required = "mainadmin.mode_sent"
     template_name = 'ctr/sentmoderste.html'
 
     def get_context_data(self, **kwargs):
         context = super(ModerateNewSentence, self).get_context_data(**kwargs)
-        try:
-            context['new_sent'] = new_sent = Sentence.objects.get_sent_for_mode()
+        new_sent = Sentence.objects.get_sent_for_mode()
+        if new_sent:
+            context['new_sent'] = new_sent
             context['type_sent'] = TypeSentence.object.only('name').get(pk=new_sent.type_id)
             context['category_sent'] = Categories.object.only('name').get(pk=new_sent.category_id)
             context['region_sent'] = Regions.object.only('name').get(pk=new_sent.region_id)
@@ -203,8 +204,7 @@ class ModerateNewSentence(LoginRequiredMixin, PermissionRequiredMixin, TemplateV
             context['slug'] = 'Moderation sentence'
             new_sent.on_moderation = True
             new_sent.save()
-            return context
-        except IndexError:
+        else:
             context['no_sentence'] = True
         return context
 
@@ -212,7 +212,7 @@ class ModerateNewSentence(LoginRequiredMixin, PermissionRequiredMixin, TemplateV
 class ModeResult(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
 
     login_url = '/'
-    permission_required = "auth.change_user"
+    permission_required = "mainadmin.mode_sent"
     template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):

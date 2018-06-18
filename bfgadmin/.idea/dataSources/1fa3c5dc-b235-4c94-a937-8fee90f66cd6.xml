@@ -13,5 +13,7 @@
     <schema id="7" parent="1" name="performance_schema"/>
     <schema id="8" parent="1" name="portal"/>
     <schema id="9" parent="1" name="test"/>
+    <schema id="10" parent="1" name="dsadb"/>
+    <schema id="11" parent="1" name="dsdb"/>
   </database-model>
 </dataSource>

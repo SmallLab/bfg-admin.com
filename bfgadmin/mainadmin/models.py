@@ -5,11 +5,11 @@ from mainadmin.mainhelpers import MainImgTypeField as MI
 """-------------------------------- Categories Model -------------------------------------------"""
 
 """
-Custom Manadger for model Categories
+Custom Manager for model Categories
 """
 
 
-class ManadgerCategories(models.Manager):
+class ManagerCategories(models.Manager):
 #Get active Categories
     def get_active_categories(self):
         return self.get_queryset().filter(is_active__exact = True)
@@ -28,7 +28,7 @@ class Categories(models.Model):
     is_icon_img = models.BooleanField(default=False)
     max_num = models.SmallIntegerField(default=1)
     paid_num = models.SmallIntegerField(default=5)
-    object = ManadgerCategories()
+    object = ManagerCategories()
 
     class Meta:
         db_table = 'mainbfg_categories'
@@ -43,7 +43,7 @@ class Categories(models.Model):
 """-------------------------------- Regions Model -------------------------------------------"""
 
 
-class ManadgerRegions(models.Manager):
+class ManagerRegions(models.Manager):
     pass
 
 
@@ -51,7 +51,7 @@ class Regions(models.Model):
     name = models.CharField(max_length=100)
     link_name = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
-    object = ManadgerRegions()
+    object = ManagerRegions()
 
     def get_absolute_url(self):
         return "/%s/" % self.link_name
@@ -69,7 +69,7 @@ Custom Manadger for model TypeSentence
 """
 
 
-class ManadgerTypeSentence(models.Manager):
+class ManagerTypeSentence(models.Manager):
 #Get active Types
     def get_active_types(self):
         return self.get_queryset().filter(is_active__exact= True)
@@ -79,7 +79,7 @@ class TypeSentence(models.Model):
     name = models.CharField(max_length=50)
     link_name = models.CharField(max_length=50, default='')
     is_active = models.BooleanField(default=True)
-    object = ManadgerTypeSentence()
+    object = ManagerTypeSentence()
 
     def get_absolute_url(self):
         return "/%s/" % self.link_name
@@ -124,13 +124,19 @@ class ManagerSentences(models.Manager):
             return False
 
     def get_sent_for_mode(self):
-        return Sentence.objects.order_by('-create_time').filter(on_moderation=0).filter(status=0)[0]
+        try:
+            return Sentence.objects.order_by('-create_time').filter(on_moderation=0).filter(status=0)[0]
+        except IndexError:
+            return False
 
     def set_mode_result(self, kwargs):
         sentence = Sentence.objects.get(pk=kwargs['pk'])
         sentence.status = kwargs['status']
         sentence.on_moderation = False
         sentence.save()
+        # Save record for sending messges on subscrabers
+        if kwargs['status'] == 1:
+            pass
 
 
 class Sentence(models.Model):
