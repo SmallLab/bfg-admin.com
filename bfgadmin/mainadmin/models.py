@@ -115,6 +115,24 @@ def custom_directory_path(instance, filename):
     return 'images/{0}/{1}'.format(instance.dirname_img, filename)
 
 
+class ManagerSentences(models.Manager):
+
+    def get_single_sentence(self, pk):
+        try:
+            return Sentence.objects.get(pk=pk)
+        except Sentence.DoesNotExist:
+            return False
+
+    def get_sent_for_mode(self):
+        return Sentence.objects.order_by('-create_time').filter(on_moderation=0).filter(status=0)[0]
+
+    def set_mode_result(self, kwargs):
+        sentence = Sentence.objects.get(pk=kwargs['pk'])
+        sentence.status = kwargs['status']
+        sentence.on_moderation = False
+        sentence.save()
+
+
 class Sentence(models.Model):
 
     type_id = models.SmallIntegerField()
@@ -148,6 +166,7 @@ class Sentence(models.Model):
     on_moderation = models.BooleanField(default=False)
     link_name = models.CharField(max_length=550)
     identifier = models.CharField(max_length=20)
+    objects = ManagerSentences()
 
     def get_absolute_url(self):
         return "sentence/%s" % self.link_name

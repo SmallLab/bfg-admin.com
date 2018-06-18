@@ -102,7 +102,7 @@ class AjaxCtrActive(LoginRequiredMixin, PermissionRequiredMixin, View):
             ctr = self.data_db[self.request.GET['key_ctr']].object.get(pk=kwargs['pk'])
             if ctr.is_active:
                 ctr.is_active = False
-                data = {"status":False}
+                data = {"status": False}
             else:
                 ctr.is_active = True
                 data = {"status": True}
@@ -180,7 +180,7 @@ class AjaxNewSentencesView(LoginRequiredMixin, PermissionRequiredMixin, View):
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
-            return JsonResponse({'status':True, 'count':Sentence.objects.filter(on_moderation=0).count()})
+            return JsonResponse({'status': True, 'count': Sentence.objects.filter(on_moderation=0).filter(status=0).count()})
 
 """
     Moderate new sentence
@@ -195,7 +195,7 @@ class ModerateNewSentence(LoginRequiredMixin, PermissionRequiredMixin, TemplateV
     def get_context_data(self, **kwargs):
         context = super(ModerateNewSentence, self).get_context_data(**kwargs)
         try:
-            context['new_sent'] = new_sent = Sentence.objects.order_by('-create_time').filter(on_moderation=0)[0]
+            context['new_sent'] = new_sent = Sentence.objects.get_sent_for_mode()
             context['type_sent'] = TypeSentence.object.only('name').get(pk=new_sent.type_id)
             context['category_sent'] = Categories.object.only('name').get(pk=new_sent.category_id)
             context['region_sent'] = Regions.object.only('name').get(pk=new_sent.region_id)
@@ -216,8 +216,5 @@ class ModeResult(LoginRequiredMixin, PermissionRequiredMixin, TemplateView):
     template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):
-        sentence = Sentence.objects.get(pk=kwargs['pk'])
-        sentence.status = kwargs['status']
-        sentence.on_moderation = True
-        sentence.save()
+        Sentence.objects.set_mode_result(kwargs)
         return super(ModeResult, self).get(request)
