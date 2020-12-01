@@ -1,13 +1,14 @@
 from django.db.models import FileField
 from django.forms import forms
 
-
 """
     Custom type for field 'main_img' in table Sentence
     https://blog.bixly.com/accept-only-specific-file-types-in-django-file-upload
 """
+
+
 class MainImgTypeField(FileField):
-    """
+  """
     Same as FileField, but you can specify:
         * content_types - list containing allowed content_types.
         Example: ['application/pdf', 'image/jpeg']
@@ -22,23 +23,24 @@ class MainImgTypeField(FileField):
             250MB - 214958080
             500MB - 429916160
     """
-    def __init__(self, *args, **kwargs):
-        self.content_types = kwargs.pop("content_types")
-        self.max_upload_size = kwargs.pop("max_upload_size")
 
-        super(MainImgTypeField, self).__init__(*args, **kwargs)
+  def __init__(self, *args, **kwargs):
+    # self.content_types = kwargs.pop("content_types")
+    # self.max_upload_size = kwargs.pop("max_upload_size")
 
-    def clean(self, *args, **kwargs):
-        data = super(MainImgTypeField, self).clean(*args, **kwargs)
-        file = data.file
-        try:
-            content_type = file.content_type
-            if content_type in self.content_types:
-                if file._size > self.max_upload_size:
-                    raise forms.ValidationError(('Превышен размер загружаемого файла'))
-            else:
-                raise forms.ValidationError(('Расширение файла не поддерживается.'))
-        except AttributeError:
-            pass
+    super(MainImgTypeField, self).__init__(*args, **kwargs)
 
-        return data
+  def clean(self, *args, **kwargs):
+    data = super(MainImgTypeField, self).clean(*args, **kwargs)
+    file = data.file
+    try:
+      content_type = file.content_type
+      if content_type in self.content_types:
+        if file._size > self.max_upload_size:
+          raise forms.ValidationError(('Превышен размер загружаемого файла'))
+      else:
+        raise forms.ValidationError(('Расширение файла не поддерживается.'))
+    except AttributeError:
+      pass
+
+    return data
