@@ -41,10 +41,9 @@ class Categories(models.Model):
 
 
 """-------------------------------- Regions Model -------------------------------------------"""
-
-
 class ManagerRegions(models.Manager):
-  pass
+  def get_active_categories(self):
+    return self.get_queryset()
 
 
 class Regions(models.Model):
@@ -92,8 +91,6 @@ class TypeSentence(models.Model):
 
 
 """"-------------------------------- Profile Model -------------------------------------------"""
-
-
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   phone = models.CharField(blank=True, max_length=100)
@@ -127,12 +124,12 @@ class ManagerSentences(models.Manager):
 
   def get_sent_for_mode(self):
     try:
-      return Sentence.objects.order_by('-create_time').filter(on_moderation=0).filter(status=0)[0]
+      return Sentence.objects.using("mainbfg").order_by('-create_time').filter(on_moderation=0).filter(status=0)[0]
     except IndexError:
       return False
 
   def set_mode_result(self, kwargs):
-    sentence = Sentence.objects.get(pk=kwargs['pk'])
+    sentence = Sentence.objects.using("mainbfg").get(pk=kwargs['pk'])
     sentence.status = kwargs['status']
     sentence.on_moderation = False
     sentence.save()
@@ -186,11 +183,15 @@ class Sentence(models.Model):
 
 
 """---------------------------------Images Model----------------------------------------------"""
+class ImageManager(models.Manager):
+  def get_queryset(self, *args, **kwargs):
+    return super().get_queryset(*args, **kwargs)
 
 
 class Image(models.Model):
   sentence = models.ForeignKey(Sentence, on_delete=models.CASCADE, related_name='image')
   img_path = models.CharField(max_length=250, blank=True)
+  object = ImageManager()
 
   def get_absolute_url(self):
     return self.img_path

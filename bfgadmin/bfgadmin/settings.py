@@ -25,7 +25,7 @@ SECRET_KEY = 'jyy+2kz^y)i^%#x8m1!77bed5w^0rb+_olww8ewwf0k_h20$#$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -46,7 +46,6 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    # 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -75,12 +74,12 @@ WSGI_APPLICATION = 'bfgadmin.wsgi.application'
 POSTGRES_HOST = os.getenv('POSTGRES_HOST', 'localhost')
 POSTGRES_DB = os.getenv('POSSTGRES_DB', 'bfgmain')
 POSTGRES_PASSWORD = os.getenv('POSSTGRES_PASSWORD', '1234567')
-POSTGRES_USER = os.getenv('POSSTGRES_USER', 'postgres')
+POSTGRES_USER = os.getenv('POSSTGRES_USER', 'bfg_user')
 
 POSTGRES_HOST_ADMIN = os.getenv('POSTGRES_HOST', 'localhost')
 POSTGRES_DB_ADMIN = os.getenv('POSSTGRES_DB', 'bfgmainadmin')
 POSTGRES_PASSWORD_ADMIN = os.getenv('POSSTGRES_PASSWORD', '1234567')
-POSTGRES_USER_ADMIN = os.getenv('POSSTGRES_USER', 'postgres')
+POSTGRES_USER_ADMIN = os.getenv('POSSTGRES_USER', 'bfg_user')
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -146,11 +145,20 @@ STATICFILES_DIRS = ( os.path.join('static'), )
 #For fire server
 #STATIC_ROOT = 'bfg-admin.com/static'
 
+REDIS_HOST = os.getenv('REDIS', 'localhost')
+REDIS_PORT = int(os.getenv('REDIS_PORT', '6379'))
+
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         'LOCATION': '127.0.0.1:11211',
-        'TIMEOUT': None,
+    },
+    "redis": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://"+REDIS_HOST+":"+str(REDIS_PORT),
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        },
     }
 }
 
@@ -160,4 +168,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
 
-MAIN_HOST_SITE = 'http://localhost:8086'
+MAIN_HOST_SITE = 'http://localhost:8001'

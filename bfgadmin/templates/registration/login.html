@@ -18,7 +18,7 @@
 </div>
 
 <!-- Simple Login - START -->
-<form class="col-md-12" method="post" action="">
+<form class="col-md-12" method="post" action="">{% csrf_token %}
     {% if form.errors %}
         {% for error in form.non_field_errors %}
             <div class="alert alert-danger">

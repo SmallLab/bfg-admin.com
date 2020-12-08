@@ -195,9 +195,9 @@ class ModerateNewSentence(LoginRequiredMixin, PermissionRequiredMixin, TemplateV
     new_sent = Sentence.objects.get_sent_for_mode()
     if new_sent:
       context['new_sent'] = new_sent
-      context['type_sent'] = TypeSentence.object.only('name').get(pk=new_sent.type_id)
-      context['category_sent'] = Categories.object.only('name').get(pk=new_sent.category_id)
-      context['region_sent'] = Regions.object.only('name').get(pk=new_sent.region_id)
+      context['type_sent'] = TypeSentence.object.using("mainbfg").only('name').get(pk=new_sent.type_id)
+      context['category_sent'] = Categories.object.using("mainbfg").only('name').get(pk=new_sent.category_id)
+      context['region_sent'] = Regions.object.using("mainbfg").only('name').get(pk=new_sent.region_id)
       context['main_host'] = settings.MAIN_HOST_SITE
       context['slug'] = 'Moderation sentence'
       new_sent.on_moderation = True
